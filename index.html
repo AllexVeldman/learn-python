@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Learn Python</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					Learn Python<br/><br/>
+					The extraordinarily incomplete source for learning Python basics
+					by Allex Veldman
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						Press Esc at any time to show the overview of slides
+						
+						## Topics
+						- installing python
+						- [assignment] hello world
+						- variables
+						- functions
+						- input
+						- [assignment] write to a file
+						- batteries included
+						- pypi
+						- [assignment] read excel file
+						- classes
+						- modules
+						- [assignment] make a plot
+						- best practices
+							- virtual environments
+							- docstrings
+							- comments
+					  </textarea>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Install Python
+							Download the latest release from the [Python website](https://www.python.org/downloads/)
+							and follow the installer instructions.
+
+							https://wiki.python.org/moin/BeginnersGuide/Download contains more information if needed.
+						</textarea>
+					</section>
+					<section>
+						<p>Check Installation</p>
+						<ul>
+							<li>Open the command line</li>
+							<li>[Windows] <em>Win + R</em> > cmd</li>
+							<li>[Mac] <em>Cmd + Space</em> > Terminal.app</li>
+						</ul>
+						<pre><code>
+							[Allex Veldman ~]$ python --version
+							Python 3.10.7
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>Hello World</p>
+						<pre>python hello-world.py
+							<code data-trim data-line-numbers>
+								print("Hello World")
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>Hello World (Interactive)</p>
+						<pre><code data-trim>
+							[Allex Veldman ~]$ python
+							>>> print("Hello World")
+							Hello World
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<p>Variables</p>
+					<pre>
+						<code class="language-python" data-trim data-line-numbers="1-3|4-5|6-7">
+							a_int = 1  # Integer
+							a_float = 3.2  # Floating-point number
+							a_string = "This is a string"
+							# List of values
+							a_list = [1, 2, 3, a_float]
+							# key-value pairs
+							a_dict = {"key1": a_int, "key2": "some text"}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<p>Functions</p>
+					<pre>
+						<code class="language-python" data-trim data-line-numbers="1-3|5">
+							def add(left, right):
+								"""Add two numbers together"
+								return left + right
+							
+							result = add(1, 2)
+						</code>
+					</pre>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Pitfalls
+							The Python language is very easy to start with.
+							This also comes with some drawbacks or Pitfalls
+
+							The below slides show some common pitfall that might
+							not be obvious.
+						</textarea>
+					</section>
+					<section>
+						<p>Mutability</p>
+						objects like lists and dicts are mutable, so they can be changed.
+						<pre>
+							<code class="language-python" data-trim data-line-numbers>
+								def increment_list_element(index, input_list):
+								    """increment and return the element `index` in `input_list`"""
+								    input_list[index] += 1
+								    return input_list[index]
+								
+								x = list(range(5))
+								print(x)
+								value = increment_list_element(2, x)
+								print(value)
+								print(x)
+
+								[0, 1, 2, 3, 4]
+								3
+								[0, 1, 3, 3, 4]
+							</code>
+						</pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				slideNumber: true,
+			});
+		</script>
+	</body>
+</html>
