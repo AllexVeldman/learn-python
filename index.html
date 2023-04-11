@@ -34,7 +34,7 @@
 						- [assignment] write to a file
 						- batteries included
 						- pypi
-						- [assignment] read excel file
+						- [assignment] write an excel file
 						- classes
 						- modules
 						- [assignment] make a plot
@@ -78,8 +78,7 @@
 					</section>
 					<section>
 						<p>Hello World (Interactive)</p>
-						<pre><code data-trim>
-							[Allex Veldman ~]$ python
+						<pre><code class="language-python-repl" data-trim>
 							>>> print("Hello World")
 							Hello World
 						</code></pre>
@@ -104,12 +103,119 @@
 					<pre>
 						<code class="language-python" data-trim data-line-numbers="1-3|5">
 							def add(left, right):
-								"""Add two numbers together"
-								return left + right
+							    """Add two numbers together"
+							    return left + right
 							
 							result = add(1, 2)
 						</code>
 					</pre>
+				</section>
+				<section>
+					<p>Input</p>
+					<pre>
+						<code class="language-python-repl" data-trim>
+							>>> name = input("What's your name?: ")
+							What's your name?: Allex
+
+							>>> print("Your name is", name)
+							Your name is Allex
+						</code>
+					</pre>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## [Assignment] Write to file
+							- Ask for a filename
+							- Create a file with that name in the current directory containing some user provided text
+	
+							https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
+						</textarea>
+					</section>
+					<section>
+						<p>Solution</p>
+						<pre>
+							<code class="language-python" data-trim>
+								filename = input("[filename]: ")
+
+								data = input("What would you like to write?: ")
+								with open(filename, mode="w") as file:
+									file.write(data)
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>Solution 2</p>
+						<pre>
+							<code class="language-python" data-trim>
+								from pathlib import Path
+
+								filename = input("[filename]: ")
+								out_file = Path(filename)
+								data = input("[content]: ")
+								out_file.write_text(data)
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Batteries included
+						
+						Python contains a big assortment of modules and functions for common (and not so common) tasks:
+						https://docs.python.org/3/library/index.html
+
+						Things I use regularly:
+						- `pathlib.Path`
+						- `dataclasses`
+						- `json`
+						- `csv`
+
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## 3rd party batteries
+						
+						If you want it, someone probably already did it.
+						packages can be installed from [PyPi](https://pypi.org/) using `pip`
+
+						`pip install openpyxl`
+
+					</textarea>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## [Assignment] Create an Excel file
+							
+							Using `openpyxl`, create an excel file with the name and age of everyone present in the room.
+
+							https://openpyxl.readthedocs.io/en/stable/tutorial.html
+	
+						</textarea>
+					</section>
+					<section>
+						<p>Solution</p>
+						<pre>
+							<code class="language-python" data-trim>
+								workbook = Workbook()
+								worksheet = workbook.create_sheet("Cities", 0)
+
+								data = [
+									["Name", "City"],
+									["Jarle", "Amsterdam"],
+									["Lisa", "Eindhoven"],
+									["Allex", "Eindhoven"],
+								]
+
+								for row in data:
+									worksheet.append(row)
+								
+								workbook.save("assignment.xlsx")
+							</code>
+						</pre>
+					</section>
 				</section>
 				<section>
 					<section data-markdown>

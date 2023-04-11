@@ -2,7 +2,7 @@ from pathlib import Path
 
 def using_open():
     """Create or replace a file using the builtin open() function"""
-    filename = "hello.txt"
+    filename = input("[filename]: ")
     
     print(f"Creating a file called {filename}")
     with open(filename, mode="w") as file:
